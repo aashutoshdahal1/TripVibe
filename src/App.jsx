@@ -1,15 +1,15 @@
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
-import TopNavbar from './components/TopNavbar'
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-        {/* Minimal shell: just navbar and background */}
-        <div className="app-shell">
-          <TopNavbar />
-        </div>
+        <Routes>
+          {/* Single route: always render the HomePage shell (navbar + sidebar + right sidebar) */}
+          <Route path="/*" element={<HomePage />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   )
