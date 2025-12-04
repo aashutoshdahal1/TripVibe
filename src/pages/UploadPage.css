@@ -1,0 +1,496 @@
+.upload-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.upload-main {
+  flex: 1;
+  margin-left: 260px;
+  padding: 24px 32px;
+}
+
+.upload-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.upload-header {
+  grid-column: 1 / -1;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.upload-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.upload-header p {
+  color: var(--gray-600);
+  font-size: 16px;
+}
+
+.upload-wizard {
+  grid-column: 1;
+}
+
+.wizard-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding: 0 24px;
+}
+
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
+}
+
+.wizard-step::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--gray-200);
+  z-index: -1;
+}
+
+.wizard-step:last-child::after {
+  display: none;
+}
+
+.wizard-step.completed::after {
+  background: var(--color-primary);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.wizard-step.active .step-number {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.wizard-step.completed .step-number {
+  background: var(--color-primary);
+  color: white;
+}
+
+.step-title {
+  font-size: 13px;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.wizard-step.active .step-title {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.wizard-content {
+  min-height: 500px;
+}
+
+.upload-step {
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.upload-step h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 24px;
+}
+
+.upload-dropzone {
+  border: 2px dashed var(--gray-300);
+  border-radius: 16px;
+  padding: 64px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--gray-50);
+  position: relative;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragging {
+  border-color: var(--color-primary);
+  background: var(--color-primary-alpha);
+}
+
+.upload-dropzone svg {
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.upload-dropzone p {
+  font-size: 16px;
+  color: var(--gray-700);
+  margin-bottom: 8px;
+}
+
+.dropzone-hint {
+  font-size: 14px;
+  color: var(--gray-500);
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-requirements {
+  margin-top: 16px;
+  text-align: center;
+  color: var(--gray-500);
+  font-size: 13px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+.itinerary-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.itinerary-day-card {
+  padding: 24px;
+  background: var(--gray-50);
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+}
+
+.day-header-builder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.day-header-builder h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.remove-day-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: var(--gray-200);
+  color: var(--gray-600);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-day-btn:hover {
+  background: var(--color-secondary);
+  color: white;
+}
+
+.add-day-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: var(--gray-100);
+  border: 2px dashed var(--gray-300);
+  border-radius: 12px;
+  color: var(--gray-700);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-day-btn:hover {
+  background: var(--color-primary-alpha);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.expenses-table {
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 60px;
+  gap: 16px;
+  padding: 16px;
+  background: var(--gray-100);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-dark);
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 60px;
+  gap: 16px;
+  padding: 16px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.table-input,
+.table-select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  font-size: 14px;
+  background: white;
+}
+
+.table-input:focus,
+.table-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+.remove-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: var(--color-secondary);
+  color: white;
+}
+
+.add-expense-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--gray-50);
+  border: none;
+  color: var(--gray-700);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-expense-btn:hover {
+  background: var(--color-primary-alpha);
+  color: var(--color-primary);
+}
+
+.total-expenses {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: var(--gradient-brand-alpha);
+  border-radius: 12px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.total-amount {
+  font-size: 24px;
+  color: var(--color-text-dark);
+}
+
+.review-section {
+  text-align: center;
+  padding: 40px;
+}
+
+.review-section p {
+  font-size: 16px;
+  color: var(--gray-600);
+  margin-bottom: 24px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.upload-sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.auto-save-panel {
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.auto-save-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.save-draft-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  color: var(--gray-700);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-draft-btn:hover {
+  background: var(--gray-200);
+  border-color: var(--gray-300);
+}
+
+@media (max-width: 1200px) {
+  .upload-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .upload-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 1024px) {
+  .upload-main {
+    margin-left: 80px;
+    padding: 16px;
+  }
+  
+  .wizard-steps {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .upload-main {
+    margin-left: 0;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+

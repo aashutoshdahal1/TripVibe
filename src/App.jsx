@@ -7,7 +7,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <Routes>
-          {/* Single route: always render the HomePage shell (navbar + sidebar + right sidebar) */}
+          {/* Minimal version for initial GitHub push: only HomePage (navbar + sidebar + feed + right sidebar) */}
           <Route path="/*" element={<HomePage />} />
         </Routes>
       </Router>
