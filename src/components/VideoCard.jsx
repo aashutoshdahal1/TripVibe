@@ -1,10 +1,49 @@
 import { Link } from 'react-router-dom'
+import { useRef, useEffect, useState } from 'react'
 import { Heart, MessageCircle, Share2, MapPin, Calendar } from 'lucide-react'
 import './VideoCard.css'
 
 const VideoCard = ({ video }) => {
+  const videoRef = useRef(null)
+  const cardRef = useRef(null)
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInView(entry.isIntersecting)
+          
+          if (entry.isIntersecting && videoRef.current) {
+            // Play video when card is in view
+            videoRef.current.play().catch(err => {
+              console.log('Autoplay prevented:', err)
+            })
+          } else if (videoRef.current) {
+            // Pause video when card is out of view
+            videoRef.current.pause()
+          }
+        })
+      },
+      {
+        threshold: 0.6, // Trigger when 60% of the card is visible
+        rootMargin: '0px'
+      }
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className="video-card glass">
+    <div ref={cardRef} className="video-card glass">
       <div className="video-header">
         <div className="video-author">
           <div className="author-avatar">
@@ -24,12 +63,50 @@ const VideoCard = ({ video }) => {
         </div>
       </div>
       
-      <Link to={`/watch/${video.id}`} className="video-thumbnail">
-        <div className="video-placeholder">
-          <div className="play-icon">▶</div>
-          <div className="video-duration">{video.duration}</div>
-        </div>
-      </Link>
+      <div className="video-thumbnail">
+        {video.videoUrl ? (
+          <div className="video-thumbnail-container">
+            <video
+              ref={videoRef}
+              src={video.videoUrl}
+              className="video-thumbnail-video"
+              loop
+              muted
+              playsInline
+              poster={video.thumbnail}
+            />
+            <Link to={`/watch/${video.id}`} className="video-overlay-link">
+              {!isInView && (
+                <div className="video-thumbnail-overlay">
+                  <div className="play-icon">▶</div>
+                </div>
+              )}
+            </Link>
+            <div className="video-duration">{video.duration}</div>
+          </div>
+        ) : video.thumbnail ? (
+          <Link to={`/watch/${video.id}`} className="video-thumbnail-link">
+            <div className="video-thumbnail-container">
+              <img 
+                src={video.thumbnail} 
+                alt={video.caption || 'Video thumbnail'}
+                className="video-thumbnail-image"
+              />
+              <div className="video-thumbnail-overlay">
+                <div className="play-icon">▶</div>
+              </div>
+              <div className="video-duration">{video.duration}</div>
+            </div>
+          </Link>
+        ) : (
+          <Link to={`/watch/${video.id}`} className="video-thumbnail-link">
+            <div className="video-placeholder">
+              <div className="play-icon">▶</div>
+              <div className="video-duration">{video.duration}</div>
+            </div>
+          </Link>
+        )}
+      </div>
       
       <div className="video-content">
         <p className="video-caption">{video.caption}</p>

@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { useRef, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import TopNavbar from '../components/TopNavbar'
 import { Heart, MessageCircle, Share2, Bookmark, MapPin, Calendar } from 'lucide-react'
@@ -6,38 +7,126 @@ import './VideoWatchPage.css'
 
 const VideoWatchPage = () => {
   const { id } = useParams()
+  const videoRef = useRef(null)
   
-  // Mock data
-  const video = {
-    id: id,
-    author: 'Sarah Chen',
-    location: 'Bali, Indonesia',
-    date: '2 days ago',
-    duration: '5:32',
-    caption: 'Exploring the beautiful rice terraces of Ubud! This place is absolutely magical ✨ The views here are incredible and the local culture is so rich. Make sure to visit early in the morning to avoid the crowds!',
-    likes: 1240,
-    comments: 89,
-    views: '12.5k',
-    itinerary: {
+  // Mock data - matching HomePage videos
+  const videoData = {
+    '1': {
       id: 1,
-      title: '7 Days in Bali',
-      days: 7,
-      destinations: ['Ubud', 'Seminyak', 'Canggu', 'Nusa Penida', 'Sanur'],
-      budget: '$1,200',
-      highlights: [
-        'Rice terraces tour',
-        'Beach hopping',
-        'Temple visits',
-        'Waterfall adventures'
-      ]
+      author: 'Sarah Chen',
+      location: 'Forest, Costa Rica',
+      date: '2 days ago',
+      duration: '5:32',
+      caption: 'Exploring the beautiful lush green forests! This place is absolutely magical ✨ Nature at its finest! The views here are incredible and the biodiversity is so rich. Make sure to visit early in the morning to see the wildlife!',
+      likes: 1240,
+      comments: 89,
+      views: '12.5k',
+      videoUrl: 'https://www.pexels.com/download/video/6394054/',
+      thumbnail: 'https://images.pexels.com/videos/3045163/pexels-photo-3045163.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1280',
+      itinerary: {
+        id: 1,
+        title: '7 Days in Costa Rica',
+        days: 7,
+        destinations: ['Monteverde', 'Arenal', 'Manuel Antonio', 'Tortuguero', 'La Fortuna'],
+        budget: '$1,200',
+        highlights: [
+          'Rainforest tours',
+          'Wildlife watching',
+          'Waterfall visits',
+          'Cloud forest hikes'
+        ]
+      }
+    },
+    '2': {
+      id: 2,
+      author: 'Mike Johnson',
+      location: 'Mountain Range, Switzerland',
+      date: '3 days ago',
+      duration: '8:15',
+      caption: 'Breathtaking mountain views covered in snow! 🏔️ The Alps never disappoint!',
+      likes: 2100,
+      comments: 156,
+      views: '18.2k',
+      videoUrl: 'https://www.pexels.com/download/video/6394054/',
+      thumbnail: 'https://images.pexels.com/videos/3044149/pexels-photo-3044149.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1280',
+      itinerary: {
+        id: 2,
+        title: 'Alps Adventure',
+        days: 5,
+        destinations: ['Zermatt', 'Interlaken', 'Jungfrau', 'Grindelwald', 'Lucerne'],
+        budget: '$1,800',
+        highlights: [
+          'Mountain hiking',
+          'Skiing',
+          'Cable car rides',
+          'Alpine villages'
+        ]
+      }
+    },
+    '3': {
+      id: 3,
+      author: 'Emma Wilson',
+      location: 'Ocean Coast, Hawaii',
+      date: '5 days ago',
+      duration: '6:45',
+      caption: 'Crystal clear waters and pristine beaches 🌊 Paradise on Earth!',
+      likes: 3400,
+      comments: 234,
+      views: '25.7k',
+      videoUrl: 'https://www.pexels.com/download/video/6394054/',
+      thumbnail: 'https://images.pexels.com/videos/2491284/pexels-photo-2491284.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1280',
+      itinerary: {
+        id: 3,
+        title: 'Hawaiian Paradise',
+        days: 10,
+        destinations: ['Maui', 'Oahu', 'Big Island', 'Kauai'],
+        budget: '$2,500',
+        highlights: [
+          'Beach hopping',
+          'Snorkeling',
+          'Waterfall hikes',
+          'Sunset viewing'
+        ]
+      }
     }
   }
+  
+  const video = videoData[id] || videoData['1']
 
   const comments = [
     { id: 1, author: 'TravelLover', text: 'Amazing video! Adding this to my bucket list!', time: '2h ago' },
     { id: 2, author: 'Wanderer', text: 'The rice terraces look incredible!', time: '5h ago' },
     { id: 3, author: 'Explorer', text: 'Great itinerary, thanks for sharing!', time: '1d ago' },
   ]
+
+  // Autoplay video when page is focused
+  useEffect(() => {
+    const handleFocus = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(err => {
+          console.log('Autoplay prevented:', err)
+        })
+      }
+    }
+
+    const handleBlur = () => {
+      if (videoRef.current) {
+        videoRef.current.pause()
+      }
+    }
+
+    // Play when component mounts
+    handleFocus()
+
+    // Add event listeners for window focus/blur
+    window.addEventListener('focus', handleFocus)
+    window.addEventListener('blur', handleBlur)
+
+    return () => {
+      window.removeEventListener('focus', handleFocus)
+      window.removeEventListener('blur', handleBlur)
+    }
+  }, [id])
 
   return (
     <div className="video-watch-page">
@@ -48,9 +137,22 @@ const VideoWatchPage = () => {
           <div className="video-section">
             <div className="video-player-container glass">
               <div className="video-player">
-                <div className="video-placeholder-large">
-                  <div className="play-icon-large">▶</div>
-                </div>
+                {video.videoUrl ? (
+                  <video 
+                    ref={videoRef}
+                    src={video.videoUrl} 
+                    controls 
+                    className="video-player-element"
+                    poster={video.thumbnail}
+                    autoPlay
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <div className="video-placeholder-large">
+                    <div className="play-icon-large">▶</div>
+                  </div>
+                )}
               </div>
               
               <div className="video-info">

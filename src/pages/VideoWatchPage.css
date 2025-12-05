@@ -34,6 +34,14 @@
   position: relative;
 }
 
+.video-player-element {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
 .video-placeholder-large {
   width: 100%;
   height: 100%;

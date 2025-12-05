@@ -4,20 +4,21 @@ import VideoCard from '../components/VideoCard'
 import './HomePage.css'
 
 const HomePage = () => {
-  // Mock data - in real app, fetch from API
   const videos = [
     {
       id: 1,
       author: 'Sarah Chen',
-      location: 'Bali, Indonesia',
+      location: 'Forest, Costa Rica',
       date: '2 days ago',
       duration: '5:32',
-      caption: 'Exploring the beautiful rice terraces of Ubud! This place is absolutely magical ✨',
+      caption: 'Exploring the beautiful lush green forests! This place is absolutely magical ✨ Nature at its finest!',
       likes: 1240,
       comments: 89,
+      videoUrl: 'https://www.pexels.com/download/video/6394054/',
+      thumbnail: 'https://images.pexels.com/videos/3045163/pexels-photo-3045163.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1280',
       itinerary: {
         id: 1,
-        title: '7 Days in Bali',
+        title: '7 Days in Costa Rica',
         days: 7,
         destinations: 5
       }
@@ -25,15 +26,17 @@ const HomePage = () => {
     {
       id: 2,
       author: 'Mike Johnson',
-      location: 'Tokyo, Japan',
+      location: 'Mountain Range, Switzerland',
       date: '3 days ago',
       duration: '8:15',
-      caption: 'Cherry blossom season in full bloom! 🌸',
+      caption: 'Breathtaking mountain views covered in snow! 🏔️ The Alps never disappoint!',
       likes: 2100,
       comments: 156,
+      videoUrl: 'https://www.pexels.com/download/video/2330730/',
+      thumbnail: 'https://images.pexels.com/videos/3044149/pexels-photo-3044149.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1280',
       itinerary: {
         id: 2,
-        title: 'Tokyo Adventure',
+        title: 'Alps Adventure',
         days: 5,
         destinations: 8
       }
@@ -41,15 +44,17 @@ const HomePage = () => {
     {
       id: 3,
       author: 'Emma Wilson',
-      location: 'Santorini, Greece',
+      location: 'Ocean Coast, Hawaii',
       date: '5 days ago',
       duration: '6:45',
-      caption: 'Sunset views that will take your breath away 🌅',
+      caption: 'Crystal clear waters and pristine beaches 🌊 Paradise on Earth!',
       likes: 3400,
       comments: 234,
+      videoUrl: 'https://www.pexels.com/download/video/30923404/',
+      thumbnail: 'https://images.pexels.com/videos/2491284/pexels-photo-2491284.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1280',
       itinerary: {
         id: 3,
-        title: 'Greek Islands Tour',
+        title: 'Hawaiian Paradise',
         days: 10,
         destinations: 4
       }
