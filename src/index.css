@@ -88,25 +88,26 @@
 /* ============================================
    DARK MODE COLOR PALETTE
    Cinematic, Premium, Immersive
+   Green Theme - Consistent with Light Mode
    ============================================ */
 [data-theme="dark"] {
-  /* Primary Colors - Dark Mode */
-  --color-primary: #3EA1FF;           /* Neon Sky Blue */
-  --color-primary-dark: #2D8CE8;      /* Darker shade for gradients */
-  --color-primary-light: #5BB0FF;     /* Lighter shade for hover states */
-  --color-primary-alpha: rgba(62, 161, 255, 0.2);  /* Transparent variant */
+  /* Primary Colors - Dark Mode (Green Theme) */
+  --color-primary: #3DB5A7;           /* Bright Forest Green - Primary brand color */
+  --color-primary-dark: #2A9D8F;      /* Forest Green - Darker shade for gradients */
+  --color-primary-light: #4EC9B8;     /* Lighter shade for hover states */
+  --color-primary-alpha: rgba(61, 181, 167, 0.2);  /* Transparent variant */
   
-  /* Secondary Colors - Dark Mode */
-  --color-secondary: #FF8054;          /* Sunset Orange */
-  --color-secondary-dark: #E66F47;     /* Darker shade for gradients */
-  --color-secondary-light: #FF9569;   /* Lighter shade for hover states */
-  --color-secondary-alpha: rgba(255, 128, 84, 0.2); /* Transparent variant */
+  /* Secondary Colors - Dark Mode (Sand Beige) */
+  --color-secondary: #E9C46A;          /* Sand Beige - Secondary brand color */
+  --color-secondary-dark: #D4B05A;     /* Darker shade for gradients */
+  --color-secondary-light: #F5D17A;   /* Lighter shade for hover states */
+  --color-secondary-alpha: rgba(233, 196, 106, 0.2); /* Transparent variant */
   
-  /* Accent Colors - Dark Mode */
-  --color-accent: #9B51E0;             /* Electric Purple */
-  --color-accent-dark: #8B41D0;       /* Darker shade for gradients */
-  --color-accent-light: #AB61F0;      /* Lighter shade for hover states */
-  --color-accent-alpha: rgba(155, 81, 224, 0.2);   /* Transparent variant */
+  /* Accent Colors - Dark Mode (Sunset Red) */
+  --color-accent: #E76F51;             /* Sunset Red - Accent color */
+  --color-accent-dark: #D15F41;       /* Darker shade for gradients */
+  --color-accent-light: #F57F61;      /* Lighter shade for hover states */
+  --color-accent-alpha: rgba(231, 111, 81, 0.2);   /* Transparent variant */
   
   /* Text Colors - Dark Mode */
   --color-text-dark: #F5F5F5;         /* Off-White - Primary text color */
@@ -120,17 +121,17 @@
   /* Borders & Dividers - Dark Mode */
   --color-border: #2C2C3A;            /* Dark Gray - Borders and dividers */
   
-  /* Gradient Combinations - Dark Mode */
+  /* Gradient Combinations - Dark Mode (Green Theme) */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
   --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
-  --gradient-brand: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
-  --gradient-brand-full: linear-gradient(90deg, #3EA1FF, #9B51E0, #FF8054);
+  --gradient-brand: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-brand-full: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
   --gradient-bg: var(--color-bg-light);
   
-  /* Gradient with Alpha - Dark Mode */
+  /* Gradient with Alpha - Dark Mode (Green Theme) */
   --gradient-brand-alpha: linear-gradient(135deg, var(--color-primary-alpha) 0%, var(--color-secondary-alpha) 100%);
-  --gradient-brand-alpha-hover: linear-gradient(135deg, rgba(62, 161, 255, 0.25) 0%, rgba(255, 128, 84, 0.25) 100%);
+  --gradient-brand-alpha-hover: linear-gradient(135deg, rgba(61, 181, 167, 0.25) 0%, rgba(233, 196, 106, 0.25) 100%);
   
   /* Glass Morphism - Dark Mode */
   --glass-bg: rgba(22, 33, 62, 0.8);
@@ -138,10 +139,10 @@
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   
-  /* Shadows - Dark Mode */
-  --shadow-primary: 0 4px 12px rgba(62, 161, 255, 0.5);
-  --shadow-secondary: 0 4px 12px rgba(255, 128, 84, 0.5);
-  --shadow-accent: 0 4px 12px rgba(155, 81, 224, 0.5);
+  /* Shadows - Dark Mode (Green Theme) */
+  --shadow-primary: 0 4px 12px rgba(61, 181, 167, 0.5);
+  --shadow-secondary: 0 4px 12px rgba(233, 196, 106, 0.5);
+  --shadow-accent: 0 4px 12px rgba(231, 111, 81, 0.5);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
   
